@@ -1,6 +1,7 @@
 package com.tennis.cup.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,7 +27,7 @@ public class Format {
     @Column(name = "broj_ucesnika", nullable = false)
     private Integer brojUcesnik;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "format")
+    @OneToMany(mappedBy = "format", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Takmicenje> takmicenja;
 
     public Long getId() {

@@ -2,6 +2,7 @@ package com.tennis.cup.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +34,7 @@ public class Takmicenje {
     @ManyToOne
     private Format format;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "takmicenje")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "takmicenje", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Prijava> prijave;
 
     public Long getId() {
